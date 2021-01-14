@@ -108,6 +108,14 @@ public class MyArrayList<E> implements List<E>{
 	@Override
 	public int indexOf(Object target) {
 		// TODO: FILL THIS IN!
+		//element에 해당하는 Index 값 출력.
+		//만약 list에 없는 element값이라면 -1을 return한다.
+		
+		for(int i=0;i<size;i++) {
+			if(equals(target, array[i])) {
+				return i;
+			}
+		}
 		return -1;
 	}
 
@@ -179,7 +187,16 @@ public class MyArrayList<E> implements List<E>{
 	@Override
 	public E remove(int index) {
 		// TODO: FILL THIS IN!
-		return null;
+		//index에 해당하는 element값을 라스트에서 삭제한다.
+		//삭제한 element값을 return한다.
+		
+		E element = get(index);
+		
+		for(int i=index;i<size-1;i++) {
+			array[i]=array[i+1];
+		}
+		size--;		
+		return element;
 	}
 
 	@Override
@@ -199,7 +216,14 @@ public class MyArrayList<E> implements List<E>{
 	@Override
 	public E set(int index, E element) {
 		// TODO: FILL THIS IN!
-		return null;
+		//array[index]값에 element값을 넣는다.
+		//기존 array[index]에 있던 값은 어디로 가며, return되는 값이 무엇인지 보기!
+		//array[i] = element
+		
+		E old = get(index);
+		array[index] = element;
+		
+		return old;
 	}
 
 	@Override
