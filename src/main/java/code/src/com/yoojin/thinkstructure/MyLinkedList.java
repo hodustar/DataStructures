@@ -8,8 +8,6 @@ import java.util.ListIterator;
 
 public class MyLinkedList<E> implements List<E> {
 
-	
-	
 	private class Node {
 		public E data;
 		public Node next;
@@ -71,6 +69,14 @@ public class MyLinkedList<E> implements List<E> {
 	@Override
 	public void add(int index, E element) {
 		//TODO: FILL THIS IN!
+		//해당 index 자리에 element를 넣는다. 
+		if(index == 0) {
+			head = new Node(element, head);
+		}else {
+			Node node = getNode(index-1);
+			node.next = new Node(element,node.next);
+		}
+		size++;
 		
 	}
 
@@ -133,6 +139,15 @@ public class MyLinkedList<E> implements List<E> {
 	@Override
 	public int indexOf(Object target) {
 		//TODO: FILL THIS IN!
+		//target에 해당하는 index값을 찾는다.
+		
+		Node node = head;
+		for(int i=0;i<size;i++) {
+			if(equals(target, node.data)) {
+				return i;
+			}
+			node = node.next;
+		}	
 		return -1;
 	}
 
@@ -198,7 +213,17 @@ public class MyLinkedList<E> implements List<E> {
 	@Override
 	public E remove(int index) {
 		//TODO: FILL THIS IN!
-		return null;
+		//add랑 비슷하면서 다르네 흠 
+		E element = get(index);
+		if(index == 0) {
+			head = head.next;
+		}else {
+			Node node = getNode(index-1);
+			node.next = node.next.next;
+		}
+		size--;
+		
+		return element;
 	}
 
 	@Override

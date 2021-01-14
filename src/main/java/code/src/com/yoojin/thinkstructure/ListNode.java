@@ -23,9 +23,6 @@ public class ListNode {
 	public String toString() {
 		return "ListNode( " + data.toString() + ")";
 	}
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-	}
 
 }
